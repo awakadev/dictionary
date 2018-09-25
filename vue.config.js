@@ -1,3 +1,9 @@
 module.exports = {
-  productionSourceMap: false
+  productionSourceMap: false,
+  baseUrl: '/dictionary/',
+  outputDir: undefined,
+  assetsDir: undefined,
+  runtimeCompiler: undefined,
+  parallel: undefined,
+  css: undefined
 }
