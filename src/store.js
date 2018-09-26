@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    words: []
+    words: [],
+    allWords: []
   },
   getters: {
     today (state) {
@@ -19,14 +20,21 @@ export default new Vuex.Store({
     },
     words (state) {
       return state.words
+    },
+    allWords (state) {
+      return state.allWords
     }
   },
   mutations: {
     SET_WORDS (state, words) {
       state.words = words
     },
+    SET_ALL_WORDS (state, allWords) {
+      state.allWords = allWords
+    },
     PUSH_WORD (state, { english, russian, example, date }) {
       state.words.push({ english, russian, example, date })
+      state.allWords.push({ english, russian, example, date })
     }
   },
   actions: {
@@ -53,6 +61,25 @@ export default new Vuex.Store({
             })
           }
           commit('SET_WORDS', words)
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    getAllWords ({ commit, getters }) {
+      let allWords = []
+      return firebase.database().ref('words').once('value')
+        .then(data => {
+          let obj = data.val()
+          for (let key in obj) {
+            allWords.push({
+              english: obj[key].hasOwnProperty('english') ? obj[key].english : '',
+              russian: obj[key].hasOwnProperty('russian') ? obj[key].russian : '',
+              example: obj[key].hasOwnProperty('example') ? obj[key].example : '',
+              date: obj[key].hasOwnProperty('date') ? obj[key].date : ''
+            })
+          }
+          commit('SET_ALL_WORDS', allWords)
         })
         .catch(error => {
           console.log(error)

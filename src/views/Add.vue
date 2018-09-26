@@ -31,7 +31,8 @@
         <el-row v-else>
             <el-col><el-button type="primary" icon="el-icon-plus" circle style="float: left" @click="add = !add"></el-button></el-col>
         </el-row>
-        <h2 class="sub-title">Today words</h2>
+        <h2>Today words</h2>
+        <hr>
             <div v-for="(word, index) in words" :key="index" class="list">
                 {{word.english}}
             </div>
@@ -118,38 +119,13 @@ export default {
   },
 
   created () {
-    this.$store.dispatch('getTodayWords')
+    if (this.words.length === 0) {
+      this.$store.dispatch('getTodayWords')
+    }
   }
 }
 </script>
 
 <style>
-    .el-row {
-        margin-bottom: 20px;
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-    .el-col {
-        border-radius: 4px;
-    }
-    .transition-box {
-        margin-bottom: 10px;
-        width: 200px;
-        height: 100px;
-        border-radius: 4px;
-        background-color: #409EFF;
-        text-align: center;
-        color: #fff;
-        padding: 40px 20px;
-        box-sizing: border-box;
-        margin-right: 20px;
-    }
-    .list {
-        /*text-align: start;*/
-        padding: 6px 0;
-    }
-    .sub-title {
-        border-bottom: 1.5px solid #2c3e50;
-    }
+
 </style>
