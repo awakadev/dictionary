@@ -9,18 +9,28 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'about',
+      component: () => import(/* webpackChunkName: "about" */ './views/About.md')
+    },
+    {
+      path: '/add',
+      name: 'add',
       component: () => import(/* webpackChunkName: "add" */ './views/Add.vue')
     },
     {
       path: '/dictionary',
       name: 'dictionary',
-      component: () => import(/* webpackChunkName: "about" */ './views/Dictionary.vue')
+      component: () => import(/* webpackChunkName: "dictionary" */ './views/Dictionary.vue')
     },
     {
       path: '/statistics',
       name: 'statistics',
-      component: () => import(/* webpackChunkName: "about" */ './views/Statistics.vue')
+      component: () => import(/* webpackChunkName: "statistics" */ './views/Statistics.vue')
+    },
+    {
+      path: '/games',
+      name: 'games',
+      component: () => import(/* webpackChunkName: "games" */ './views/Games.vue')
     }
   ]
 })

@@ -146,7 +146,7 @@ export default {
         margin-right: 20px;
     }
     .list {
-        text-align: start;
+        /*text-align: start;*/
         padding: 6px 0;
     }
     .sub-title {
