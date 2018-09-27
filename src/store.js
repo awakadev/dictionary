@@ -6,8 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    words: [],
-    allWords: []
+    words: []
   },
   getters: {
     today (state) {
@@ -16,13 +15,32 @@ export default new Vuex.Store({
         year: 'numeric',
         month: 'numeric',
         day: 'numeric'
-      }).split('.').reverse().join('-')
+      }).split('.').reverse().join('/')
     },
     words (state) {
       return state.words
     },
-    allWords (state) {
-      return state.allWords
+    todayWords (state, getters) {
+      return state.words.filter(word => { return word.date === getters.today })
+    },
+    groupedWords (state) {
+      return state.words.reduce((r, a) => {
+        r[a.date] = r[a.date] || []
+        r[a.date].push(a)
+        return r
+      }, {})
+    },
+    countGroupedWords (state) {
+      return Object.entries(state.words.reduce((r, a) => {
+        r[a.date] = r[a.date] || 0
+        r[a.date] += 1
+        return r
+      }, {}))
+    },
+    maxCountGroupedWords (state, getters) {
+      if (getters.countGroupedWords.length > 0) {
+        return getters.countGroupedWords.reduce((max, p) => p[1] > max ? p[1] : max, getters.countGroupedWords[0][1])
+      } else { return 10 }
     }
   },
   mutations: {
@@ -66,7 +84,7 @@ export default new Vuex.Store({
           console.log(error)
         })
     },
-    getAllWords ({ commit, getters }) {
+    getWords ({ commit, getters }) {
       let allWords = []
       return firebase.database().ref('words').once('value')
         .then(data => {
@@ -79,7 +97,7 @@ export default new Vuex.Store({
               date: obj[key].hasOwnProperty('date') ? obj[key].date : ''
             })
           }
-          commit('SET_ALL_WORDS', allWords)
+          commit('SET_WORDS', allWords)
         })
         .catch(error => {
           console.log(error)

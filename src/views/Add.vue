@@ -88,7 +88,7 @@ export default {
 
   computed: {
     words () {
-      return this.$store.getters.words
+      return this.$store.getters.todayWords
     }
   },
 
