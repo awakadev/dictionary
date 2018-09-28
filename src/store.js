@@ -6,7 +6,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    words: []
+    words: [],
+    game: {
+      words: [],
+      correct: {
+        english: '',
+        russian: '',
+        example: '',
+        date: ''
+      },
+      options: []
+    }
   },
   getters: {
     today (state) {
@@ -41,6 +51,9 @@ export default new Vuex.Store({
       if (getters.countGroupedWords.length > 0) {
         return getters.countGroupedWords.reduce((max, p) => p[1] > max ? p[1] : max, getters.countGroupedWords[0][1])
       } else { return 10 }
+    },
+    newGame (state) {
+      return state.game
     }
   },
   mutations: {
@@ -49,6 +62,9 @@ export default new Vuex.Store({
     },
     PUSH_WORD (state, { english, russian, example, date }) {
       state.words.push({ english, russian, example, date })
+    },
+    NEW_GAME (state, { correct, options, words }) {
+      state.game = { correct, options, words }
     }
   },
   actions: {
@@ -98,6 +114,12 @@ export default new Vuex.Store({
         .catch(error => {
           console.log(error)
         })
+    },
+    newGame ({ commit, getters }) {
+      let words = getters.words.sort(() => { return Math.random() - 0.5 }).slice(0, 10)
+      let correct = words[Math.floor(Math.random() * words.length)]
+      let options = words.map(word => { return word.russian })
+      commit('NEW_GAME', { correct, options, words })
     }
   }
 })
