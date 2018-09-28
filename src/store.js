@@ -18,7 +18,7 @@ export default new Vuex.Store({
       }).split('.').reverse().join('/')
     },
     words (state) {
-      return state.words
+      return state.words.reverse()
     },
     todayWords (state, getters) {
       return state.words.filter(word => { return word.date === getters.today })
@@ -47,12 +47,8 @@ export default new Vuex.Store({
     SET_WORDS (state, words) {
       state.words = words
     },
-    SET_ALL_WORDS (state, allWords) {
-      state.allWords = allWords
-    },
     PUSH_WORD (state, { english, russian, example, date }) {
       state.words.push({ english, russian, example, date })
-      state.allWords.push({ english, russian, example, date })
     }
   },
   actions: {
@@ -85,19 +81,19 @@ export default new Vuex.Store({
         })
     },
     getWords ({ commit, getters }) {
-      let allWords = []
+      let words = []
       return firebase.database().ref('words').once('value')
         .then(data => {
           let obj = data.val()
           for (let key in obj) {
-            allWords.push({
+            words.push({
               english: obj[key].hasOwnProperty('english') ? obj[key].english : '',
               russian: obj[key].hasOwnProperty('russian') ? obj[key].russian : '',
               example: obj[key].hasOwnProperty('example') ? obj[key].example : '',
               date: obj[key].hasOwnProperty('date') ? obj[key].date : ''
             })
           }
-          commit('SET_WORDS', allWords)
+          commit('SET_WORDS', words)
         })
         .catch(error => {
           console.log(error)

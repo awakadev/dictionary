@@ -34,12 +34,24 @@ export default {
       'countGroupedWords',
       'maxCountGroupedWords'
     ]),
+    chartData () {
+      return this.countGroupedWords.map(word => {
+        let names = this.groupedWords[word[0]].map(item => { return item.english })
+        return {
+          name: names.join('<br/>'),
+          value: word
+        }
+      })
+    },
     option () {
       return {
-        title: {
-          top: 30,
-          left: 'center',
-          text: '2016年AQI'
+        tooltip: {
+          formatter: function (params) {
+            return [
+              params.value[0] + '<hr size=1 style="margin: 3px 0" class="tooltip-hr">',
+              params.data.name
+            ].join('')
+          }
         },
         visualMap: {
           min: 0,
@@ -68,7 +80,7 @@ export default {
         series: {
           type: 'heatmap',
           coordinateSystem: 'calendar',
-          data: this.countGroupedWords || []
+          data: this.chartData || []
         }
       }
     }
@@ -81,7 +93,7 @@ export default {
   },
 
   watch: {
-    countGroupedWords: function (val, oldVal) {
+    chartData: function (val, oldVal) {
       this.$refs.chart.mergeOptions({
         visualMap: {
           min: 0,
