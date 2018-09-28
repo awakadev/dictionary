@@ -12,12 +12,12 @@ self.__precacheManifest = [
     "url": "/dictionary/css/games.0a68e729.css"
   },
   {
-    "revision": "a9e33dbafa9c29fbc717",
-    "url": "/dictionary/js/add.abd3219d.js"
+    "revision": "3dc7949f7f24cf6d20be",
+    "url": "/dictionary/js/add.a0baf2eb.js"
   },
   {
-    "revision": "7c799366e4c3871dd100",
-    "url": "/dictionary/js/app.0768e713.js"
+    "revision": "3f2b38d5803fd27fa8fb",
+    "url": "/dictionary/js/app.2f880d79.js"
   },
   {
     "revision": "0c40f223ee59b3a3d0c9",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/dictionary/js/about.837abb4f.js"
   },
   {
-    "revision": "42b58733c2365d832dd311a1b473f4e8",
+    "revision": "0c5ea2aa952fb8f8ef2f19284740467b",
     "url": "/dictionary/index.html"
   },
   {
@@ -56,11 +56,11 @@ self.__precacheManifest = [
     "url": "/dictionary/css/chunk-vendors.b63e7ae6.css"
   },
   {
-    "revision": "7c799366e4c3871dd100",
+    "revision": "3f2b38d5803fd27fa8fb",
     "url": "/dictionary/css/app.7150b669.css"
   },
   {
-    "revision": "a9e33dbafa9c29fbc717",
+    "revision": "3dc7949f7f24cf6d20be",
     "url": "/dictionary/css/add.63b04e15.css"
   }
 ];
