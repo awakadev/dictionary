@@ -28,7 +28,7 @@ export default new Vuex.Store({
       }).split('.').reverse().join('/')
     },
     words (state) {
-      return state.words.reverse()
+      return state.words
     },
     todayWords (state, getters) {
       return state.words.filter(word => { return word.date === getters.today })
