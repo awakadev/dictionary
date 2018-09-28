@@ -1,42 +1,46 @@
 self.__precacheManifest = [
   {
-    "revision": "0f098b17f1e7ded91a55",
-    "url": "/dictionary/js/dictionary.74d5773d.js"
+    "revision": "281c22fed28a70de118d",
+    "url": "/dictionary/js/dictionary.0052cac8.js"
   },
   {
     "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
     "url": "/dictionary/robots.txt"
   },
   {
-    "revision": "08d76baeb785ce849b57",
-    "url": "/dictionary/css/games.5f9de5c4.css"
+    "revision": "699123f4b9b0d6b509f2",
+    "url": "/dictionary/css/games.0a68e729.css"
   },
   {
     "revision": "a9e33dbafa9c29fbc717",
     "url": "/dictionary/js/add.abd3219d.js"
   },
   {
-    "revision": "178ef8f194382250276a",
-    "url": "/dictionary/js/app.1d53e3e3.js"
+    "revision": "7c799366e4c3871dd100",
+    "url": "/dictionary/js/app.0768e713.js"
   },
   {
-    "revision": "64416544038ef4494dfd",
-    "url": "/dictionary/js/statistics.624fb53f.js"
+    "revision": "0c40f223ee59b3a3d0c9",
+    "url": "/dictionary/js/statistics.f89fd26b.js"
   },
   {
     "revision": "832e8c935960dc6570e3",
     "url": "/dictionary/js/chunk-vendors.6efbb033.js"
   },
   {
-    "revision": "08d76baeb785ce849b57",
-    "url": "/dictionary/js/games.e22fa64f.js"
+    "revision": "7a36f1c50b3d5d754df7",
+    "url": "/dictionary/js/contact.bef23759.js"
+  },
+  {
+    "revision": "699123f4b9b0d6b509f2",
+    "url": "/dictionary/js/games.467cb29b.js"
   },
   {
     "revision": "184ef974112906f7796a",
     "url": "/dictionary/js/about.837abb4f.js"
   },
   {
-    "revision": "4ea71966bac2ce2f6bead4ec8dd25f97",
+    "revision": "42b58733c2365d832dd311a1b473f4e8",
     "url": "/dictionary/index.html"
   },
   {
@@ -52,7 +56,7 @@ self.__precacheManifest = [
     "url": "/dictionary/css/chunk-vendors.b63e7ae6.css"
   },
   {
-    "revision": "178ef8f194382250276a",
+    "revision": "7c799366e4c3871dd100",
     "url": "/dictionary/css/app.7150b669.css"
   },
   {
